@@ -1,0 +1,14 @@
+#include "main.h"
+
+void init_MKP_config(void)
+{
+	/* CONFIG RB7, RB6, RB5 AS AN OUTPUT PINS
+	 * CONFIG RB4, RB3, RB2, RB1 AS AN INPUT PINS
+	 * NOTE : DON'T MODIFY THE LSB */
+
+	TRISB = (TRISB & 0x01) | 0x1E;
+	/* ENABLE INTERNAL PULL-UPS FOR PORTb */
+	RBPU = 0;
+	/* mAKE ALL THE PORTb AS AN DIGITAL PORT */
+	ADCON1 = 0x0E;
+}
