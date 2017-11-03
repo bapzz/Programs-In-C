@@ -1,0 +1,8 @@
+
+final char driver:-
+	
+	load the driver
+	less /proc/interrupts 
+	tail -f /var/log/syslog
+	press any key
+

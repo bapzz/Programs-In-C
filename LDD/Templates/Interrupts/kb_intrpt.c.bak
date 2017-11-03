@@ -1,0 +1,95 @@
+/*
+ *  intr.c - An interrupt handler.
+ *
+ *  Copyright (C) 2010 by Emertxe
+ */
+
+/* 
+ * The necessary header files 
+ */
+
+/* 
+ * Standard in kernel modules 
+ */
+#include <linux/kernel.h>	/* We're doing kernel work */
+#include <linux/module.h>	/* Specifically, a module */
+#include <linux/version.h>
+#include <linux/sched.h>
+#include <linux/workqueue.h>
+#include <linux/interrupt.h>	/* We want an interrupt */
+#include <asm/io.h>
+#include <linux/device.h>
+#include <linux/cdev.h>
+
+#define IRQ_NUMBER 1
+
+dev_t dev;
+struct tasklet_struct tlet;
+unsigned char scan_code;
+
+void get_scan_code(unsigned long arg)
+{
+    unsigned char status;
+
+    status = inb(0x64);
+    scan_code = inb(0x60);
+
+    printk("Scan code %X (%s)\n", scan_code & 0x7F, (scan_code & 0x80) ? "Released" : "Pressed");
+}
+
+/* 
+ * This function services keyboard interrupt.
+ */
+irqreturn_t irq_handler(int irq, void *dev_id)
+{
+	tasklet_hi_schedule(&tlet);
+	//get_scan_code(1L);
+	return IRQ_HANDLED;
+}
+
+/* 
+ * Initialize the module - register the IRQ handler 
+ */
+int init_module()
+{
+	int error = 0;
+	
+	//free_irq(IRQ_NUMBER, NULL);
+
+	/* 
+	 * Request IRQ 1, the keyboard IRQ, to go to our irq_handler.
+	 * IRQF_SHARED means we're willing to have othe handlers on this IRQ.
+	 */
+	 
+	dev = MKDEV(191, 1); //Unused
+	error = request_irq(IRQ_NUMBER, &irq_handler, IRQF_SHARED, "keyboard2", &dev);
+
+	if(error)
+	{
+	    printk("Mubeen: Error no = %d\n", error);
+	    return error;
+	}
+	else
+	{
+	    printk("Mubeen: Registerd driver\n");
+	}
+	tasklet_init(&tlet, get_scan_code, (unsigned long)1L);
+	
+	return error;
+}
+
+/* 
+ * Cleanup 
+ */
+void cleanup_module()
+{
+	/* 
+	 * Freeing our KB interrupt handler
+	 */
+	tasklet_kill(&tlet);
+	free_irq(IRQ_NUMBER, &dev);
+}
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Emertxe");
+MODULE_DESCRIPTION("Interrupt handler Example for Keyboad on Intel");

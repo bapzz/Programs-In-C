@@ -1,0 +1,17 @@
+This directory contains the USB UCTL driver.
+To compile edit the Makefile to point to the correct KERNEL SOURCE path.
+
+In Ubuntu you can install Kernel header by running:
+sudo apt-get install linux-headers-`uname -r`
+
+KERNEL_SOURCE should be /usr/src/linux-headers-`uname -r`
+
+Steps to follow:
+----------------
+1. Flash the necessary firmware into the device (LED, LCD, SSD, or USB to Serial) hex files.
+2. Remove cdc_acm driver. This driver gets loaded automatically
+sudo rmmod cdc_acm
+3.  Load the USB LED driver:
+sudo insmod led-usb.ko
+4. Do a dmesg and check whether probe is getting called. Plus check whether /dev/uctl0 is created. If yes the driver has detected the device and it is ready to use.
+5. sudo echo led-on > /dev/uctl0

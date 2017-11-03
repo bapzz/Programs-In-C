@@ -1,0 +1,52 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DRIVER_AUTHOR	led-usb.c	/^MODULE_AUTHOR(DRIVER_AUTHOR);$/;"	v
+DRIVER_AUTHOR	led-usb.c	26;"	d	file:
+DRIVER_DESC	led-usb.c	/^MODULE_DESCRIPTION(DRIVER_DESC);$/;"	v
+DRIVER_DESC	led-usb.c	27;"	d	file:
+DRIVER_SHORT	led-usb.c	25;"	d	file:
+DRIVER_VERSION	led-usb.c	24;"	d	file:
+KERNEL_SOURCE	Makefile	/^	KERNEL_SOURCE := \/usr\/src\/linux-headers-`uname -r`$/;"	m
+MIN	led-usb.c	37;"	d	file:
+PWD	Makefile	/^	PWD := $(shell pwd)$/;"	m
+UCTL_PRODUCT_ID	led-usb.c	34;"	d	file:
+UCTL_TIMEOUT	led-usb.c	38;"	d	file:
+UCTL_VENDOR_ID	led-usb.c	33;"	d	file:
+USB_IDMOUSE_MINOR_BASE	led-usb.c	30;"	d	file:
+USB_RT_ACM	led-usb.c	40;"	d	file:
+acm_ctrl_msg	led-usb.c	/^static int acm_ctrl_msg(struct usb_uctl *acm, int request, int value,$/;"	f	file:
+acm_send_break	led-usb.c	128;"	d	file:
+acm_set_control	led-usb.c	124;"	d	file:
+acm_set_line	led-usb.c	126;"	d	file:
+bulk_out_buffer	led-usb.c	/^	unsigned char *bulk_out_buffer; \/* the buffer to receive data *\/$/;"	m	struct:usb_uctl	file:
+bulk_out_endpointAddr	led-usb.c	/^	__u8 bulk_out_endpointAddr; \/* the address of the bulk in endpoint *\/$/;"	m	struct:usb_uctl	file:
+bulk_out_size	led-usb.c	/^	size_t bulk_out_size; \/* the maximum bulk packet size *\/$/;"	m	struct:usb_uctl	file:
+interface	led-usb.c	/^	struct usb_interface *interface; \/* the interface for this device *\/$/;"	m	struct:usb_uctl	typeref:struct:usb_uctl::usb_interface	file:
+line	led-usb.c	/^	struct usb_cdc_line_coding line;		\/* bits, stop, parity *\/$/;"	m	struct:usb_uctl	typeref:struct:usb_uctl::usb_cdc_line_coding	file:
+lock	led-usb.c	/^	struct mutex lock; \/* locks this structure *\/$/;"	m	struct:usb_uctl	typeref:struct:usb_uctl::mutex	file:
+obj-m	Makefile	/^	obj-m := $(src-m:.c=.o)$/;"	m
+open	led-usb.c	/^	int open; \/* if the port is open or not *\/$/;"	m	struct:usb_uctl	file:
+present	led-usb.c	/^	int present; \/* if the device is not disconnected *\/$/;"	m	struct:usb_uctl	file:
+src-m	Makefile	/^	src-m := $(filter-out ${src-mod}, ${src-m})$/;"	m
+src-m	Makefile	/^	src-m := $(notdir $(wildcard ${SUBDIRS}\/*.c))$/;"	m
+src-mod	Makefile	/^	src-mod := $(notdir $(wildcard ${SUBDIRS}\/*.mod.c))$/;"	m
+uctl_class	led-usb.c	/^static struct usb_class_driver uctl_class = {$/;"	v	typeref:struct:usb_class_driver	file:
+uctl_delete	led-usb.c	/^static inline void uctl_delete(struct usb_uctl *dev)$/;"	f	file:
+uctl_disconnect	led-usb.c	/^static void uctl_disconnect(struct usb_interface *interface)$/;"	f	file:
+uctl_driver	led-usb.c	/^static struct usb_driver uctl_driver = {$/;"	v	typeref:struct:usb_driver	file:
+uctl_fops	led-usb.c	/^static const struct file_operations uctl_fops = {$/;"	v	typeref:struct:file_operations	file:
+uctl_open	led-usb.c	/^static int uctl_open(struct inode *inode, struct file *file)$/;"	f	file:
+uctl_probe	led-usb.c	/^static int uctl_probe(struct usb_interface *interface,$/;"	f	file:
+uctl_release	led-usb.c	/^static int uctl_release(struct inode *inode, struct file *file)$/;"	f	file:
+uctl_table	led-usb.c	/^static const struct usb_device_id uctl_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+uctl_write	led-usb.c	/^static ssize_t uctl_write(struct file *file, const char __user *buf, size_t cnt,$/;"	f	file:
+udev	led-usb.c	/^	struct usb_device *udev; \/* save off the usb device pointer *\/$/;"	m	struct:usb_uctl	typeref:struct:usb_uctl::usb_device	file:
+usb_uctl	led-usb.c	/^struct usb_uctl {$/;"	s	file:
+usb_uctl_exit	led-usb.c	/^module_exit(usb_uctl_exit);$/;"	v
+usb_uctl_exit	led-usb.c	/^static void __exit usb_uctl_exit(void)$/;"	f	file:
+usb_uctl_init	led-usb.c	/^module_init(usb_uctl_init);$/;"	v
+usb_uctl_init	led-usb.c	/^static int __init usb_uctl_init(void)$/;"	f	file:
